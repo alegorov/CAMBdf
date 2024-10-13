@@ -78,7 +78,9 @@
     read(args(4),*) Reion%optical_depth        !0.05430842_dl
     read(args(5),*) InitPower%ns               !0.9660499_dl
     read(args(6),*) InitPower%As               !2.100549e-09_dl
-    read(args(7),*) DarkField%delta            !-2.5_dl
+    read(args(7),*) DarkField%delta
+    read(args(8),*) DarkField%epsilon
+    read(args(9),*) DarkField%Lambda
 
     P%WantCls = .true.
     P%WantScalars = .true.

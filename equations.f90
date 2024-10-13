@@ -32,7 +32,7 @@
 
     logical, parameter :: plot_evolve = .false. !for outputing time evolution
 
-    integer, parameter :: ix_etak=1, ix_clxc=2, ix_df=3, ix_clxb=10, ix_vb=11 !Scalar array indices for each quantity
+    integer, parameter :: ix_etak=1, ix_clxc=2, ix_df=3, ix_clxb=12, ix_vb=13 !Scalar array indices for each quantity
     integer, parameter :: basic_num_eqns = ix_vb
 
     logical :: DoTensorNeutrinos = .true.
@@ -1076,6 +1076,8 @@
     y(ix_df + 4) = 0._dl
     y(ix_df + 5) = 0._dl
     y(ix_df + 6) = 0._dl
+    y(ix_df + 7) = 0._dl
+    y(ix_df + 8) = 0._dl
 
     !  Baryons
     y(ix_clxb)=InitVec(i_clxb)
@@ -1271,7 +1273,7 @@
     z=(0.5_dl*dgrho/k + etak)/adotoa
 
     ! Recalculate z
-    z = z / (1._dl  - State%CP%DarkField%p(49)*N2)
+    z = z / (1._dl  - State%CP%DarkField%p(79)*N2)
 
     ayprime(ix_df) = 2*k*z
 
@@ -1282,7 +1284,7 @@
     dgq = dgq + grhob_t*vb + grhog_t*qg + grhor_t*qr - k*State%CP%DarkField%ia2M(ix_df,ix_etak,ay,ayprime,k,W_,N_,N2,BN,kN)
 
     ! Recalculate dgq
-    dgq = dgq / (1._dl  + 0.5_dl*State%CP%DarkField%p(62)*N2)
+    dgq = dgq / (1._dl  + 0.5_dl*State%CP%DarkField%p(95)*N2)
 
     ayprime(ix_etak)=0.5_dl*dgq
 
@@ -1293,7 +1295,7 @@
     ayprime(ix_clxc) = clxcdot
 
     !  Dark Field equation of motion
-    call State%CP%DarkField%dfDeriv(ix_df,ix_etak,ay,ayprime,k,k2,W_,N_,adotoa,dB,B2,BN,kN,kB,k2N)
+    call State%CP%DarkField%dfDeriv(ix_df,ix_etak,ay,ayprime,k,k2,W_,N_,adotoa,dB,B2,BW,BN,kN,kB,k2N)
 
     !  Baryon equation of motion.
     clxbdot=-k*(z+vb)
