@@ -1273,7 +1273,7 @@
     z=(0.5_dl*dgrho/k + etak)/adotoa
 
     ! Recalculate z
-    z = z / (1._dl  - State%CP%DarkField%p(79)*N2)
+    z = z / (1._dl  - State%CP%DarkField%p(70)*N2)
 
     ayprime(ix_df) = 2*k*z
 
@@ -1284,7 +1284,7 @@
     dgq = dgq + grhob_t*vb + grhog_t*qg + grhor_t*qr - k*State%CP%DarkField%ia2M(ix_df,ix_etak,ay,ayprime,k,W_,N_,N2,BN,kN)
 
     ! Recalculate dgq
-    dgq = dgq / (1._dl  + 0.5_dl*State%CP%DarkField%p(95)*N2)
+    dgq = dgq / (1._dl  + 0.5_dl*State%CP%DarkField%p(84)*N2)
 
     ayprime(ix_etak)=0.5_dl*dgq
 
